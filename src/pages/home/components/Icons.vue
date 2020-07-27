@@ -1,6 +1,6 @@
 <template>
 <div class="icons">
-    <swiper ref="mySwiper">
+    <swiper ref="mySwiper" :options="swiperOptions">
         <swiper-slide v-for="(page, index) of pages" :key = "index">
             <div 
                 class="icon" 
@@ -20,61 +20,20 @@
 <script>
 export default {
     name: 'HomeIcons',
+    props: {
+        list: Array
+    },
     data () {
         return {
-            iconList: [
-                {
-                    id: "0001",
-                    imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-                    desc: "景点门票"
-                },
-                {
-                    id: "0002",
-                    imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/8c/47630407f70e8302.png",
-                    desc: "横店影视城"
-                },
-                {
-                    id: "0003",
-                    imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/e3/67df61427c8e1302.png",
-                    desc: "杭州宋城"
-                },
-                {
-                    id: "0004",
-                    imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",
-                    desc: "杭州野生"
-                },
-                {
-                    id: "0005",
-                    imgUrl: "http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20197/56275468d77b14cfb02430b0be09c448.png",
-                    desc: "山湾湾漂流"
-                },
-                {
-                    id: "0006",
-                    imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/b8/c5dcdb58deec2402.png",
-                    desc: "西溪周家村"
-                },
-                {
-                    id: "0007",
-                    imgUrl: "http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png",
-                    desc: "杭州必游"
-                },
-                {
-                    id: "0008",
-                    imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/75/eca3ce656c886502.png",
-                    desc: "漂流"
-                },
-                {
-                    id: "0009",
-                    imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/75/eca3ce656c886502.png",
-                    desc: "漂流"
-                },
-            ]
+            swiperOptions: {
+                autoplay: false
+            }
         }
     },
     computed: {
         pages () {
             const pages = [];
-            this.iconList.forEach((item, index) => {
+            this.list.forEach((item, index) => {
                 const page = Math.floor(index/8)
                 if(!pages[page]){
                     pages[page] = []
